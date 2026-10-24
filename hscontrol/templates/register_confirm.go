@@ -77,7 +77,7 @@ func RegisterConfirm(info RegisterConfirmInfo) *elem.Element {
 	deviceList := deviceTable(rows)
 
 	return page(
-		"Headscale - Confirm node registration",
+		ProductName+" - Confirm node registration",
 		H2(elem.Text("Confirm node registration")),
 		P(elem.Text(
 			"A device is asking to be added to your tailnet. "+
@@ -98,7 +98,7 @@ func SSHCheckConfirm(
 	source, destination string,
 ) *elem.Element {
 	return page(
-		"Headscale - Confirm SSH session",
+		ProductName+" - Confirm SSH session",
 		H2(elem.Text("Confirm SSH session")),
 		P(elem.Text(
 			"An SSH session is waiting for your approval. "+

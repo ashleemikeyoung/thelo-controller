@@ -1130,7 +1130,7 @@ func renderRegistrationSuccessTemplate(
 	reauth bool,
 ) *bytes.Buffer {
 	result := templates.AuthSuccessResult{
-		Title:   "Headscale - Node Reauthenticated",
+		Title:   templates.ProductName + " - Node Reauthenticated",
 		Heading: "Node reauthenticated",
 		Verb:    "Reauthenticated",
 		User:    user.Display(),
@@ -1141,7 +1141,7 @@ func renderRegistrationSuccessTemplate(
 	}
 
 	if !reauth {
-		result.Title = "Headscale - Node Registered"
+		result.Title = templates.ProductName + " - Node Registered"
 		result.Heading = "Node registered"
 		result.Verb = "Registered"
 	}
@@ -1153,7 +1153,7 @@ func renderAuthSuccessTemplate(
 	user *types.User,
 ) *bytes.Buffer {
 	result := templates.AuthSuccessResult{
-		Title:   "Headscale - SSH Session Authorized",
+		Title:   templates.ProductName + " - SSH Session Authorized",
 		Heading: "SSH session authorized",
 		Verb:    "Authorized",
 		User:    user.Display(),
