@@ -25,7 +25,7 @@ const (
 var (
 	// "headscale nodes list", `headscale`, 'headscale ...': the command, not the product.
 	commandMention = regexp.MustCompile("(^|[\\s`'\"(])headscale( |`|'|\"|$)")
-	// "/etc/headscale/config.yaml" and the other default paths.
+	// "/etc/headscale/config.yaml" and the other default paths, in help text only.
 	pathMention = strings.NewReplacer(
 		"/etc/headscale", "/etc/thelo-controller",
 		"/var/lib/headscale", "/var/lib/thelo-controller",
@@ -39,38 +39,86 @@ var (
 )
 
 // brandText rewrites text people read: the command becomes theloctl, the product
-// the Thelo Controller, a tailnet a thelonet. The upstream credit is left as it is.
+// the Thelo Controller, a tailnet a thelonet. The upstream credit is left as it is,
+// and so is any name inside a path, URL or identifier (/etc/headscale/,
+// juanfont/headscale, tailnet_id), so error messages still point at real things.
 func brandText(s string) string {
 	if before, after, found := strings.Cut(s, brandCredit); found {
 		return brandText(before) + brandCredit + brandText(after)
 	}
 
-	s = pathMention.Replace(s)
-	s = productAfterPreposition.ReplaceAllString(s, "$1 the "+brandProduct)
-	s = productNoun.ReplaceAllString(s, brandProduct)
+	s = replaceStandalone(s, productAfterPreposition, func(m []string) string { return m[1] + " the " + brandProduct })
+	s = replaceStandalone(s, productNoun, func([]string) string { return brandProduct })
 	s = commandMention.ReplaceAllString(s, "${1}"+brandCommand+"${2}")
-	s = productMention.ReplaceAllString(s, brandProduct)
-	s = netMention.ReplaceAllStringFunc(s, func(m string) string {
-		out := brandNet + strings.TrimPrefix(strings.TrimPrefix(m, "tailnet"), "Tailnet")
-		if m[0] == 'T' {
-			return "T" + out[1:]
+	s = replaceStandalone(s, productMention, func([]string) string { return brandProduct })
+	s = replaceStandalone(s, netMention, func(m []string) string {
+		if m[1] == "T" {
+			return "T" + brandNet[1:] + m[2]
 		}
 
-		return out
+		return brandNet + m[2]
 	})
 
 	return s
 }
 
-// brandCommands applies brandText to every command's help and every flag's usage.
+// brandHelp is brandText for help and flag usage, where the default paths are
+// also ours.
+func brandHelp(s string) string {
+	return brandText(pathMention.Replace(s))
+}
+
+// replaceStandalone replaces the matches of re that stand on their own: not
+// joined to a letter, digit or one of "/._-" on either side. A full stop ends a
+// sentence unless a letter or digit follows it (headscale.sock).
+func replaceStandalone(s string, re *regexp.Regexp, repl func(submatches []string) string) string {
+	alnum := func(c byte) bool { return c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c >= '0' && c <= '9' }
+	joinedBefore := func(i int) bool { return i >= 0 && (alnum(s[i]) || strings.IndexByte("/._-", s[i]) >= 0) }
+	joinedAfter := func(i int) bool {
+		if i >= len(s) {
+			return false
+		}
+		if s[i] == '.' {
+			return i+1 < len(s) && alnum(s[i+1])
+		}
+
+		return alnum(s[i]) || strings.IndexByte("/_-", s[i]) >= 0
+	}
+
+	var b strings.Builder
+
+	last := 0
+	for _, loc := range re.FindAllStringSubmatchIndex(s, -1) {
+		if joinedBefore(loc[0]-1) || joinedAfter(loc[1]) {
+			continue
+		}
+
+		sub := make([]string, len(loc)/2)
+		for i := range sub {
+			if loc[2*i] >= 0 {
+				sub[i] = s[loc[2*i]:loc[2*i+1]]
+			}
+		}
+
+		b.WriteString(s[last:loc[0]])
+		b.WriteString(repl(sub))
+		last = loc[1]
+	}
+
+	b.WriteString(s[last:])
+
+	return b.String()
+}
+
+// brandCommands applies brandHelp to every command's help and every flag's usage.
 func brandCommands(c *cobra.Command) {
-	c.Short = brandText(c.Short)
-	c.Long = brandText(c.Long)
-	c.Example = brandText(c.Example)
-	c.Deprecated = brandText(c.Deprecated)
+	c.Short = brandHelp(c.Short)
+	c.Long = brandHelp(c.Long)
+	c.Example = brandHelp(c.Example)
+	c.Deprecated = brandHelp(c.Deprecated)
 
 	for _, fs := range []*pflag.FlagSet{c.Flags(), c.PersistentFlags()} {
-		fs.VisitAll(func(f *pflag.Flag) { f.Usage = brandText(f.Usage) })
+		fs.VisitAll(func(f *pflag.Flag) { f.Usage = brandHelp(f.Usage) })
 	}
 
 	for _, sub := range c.Commands() {
