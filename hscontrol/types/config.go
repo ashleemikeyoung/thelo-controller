@@ -334,7 +334,7 @@ var legacyTLSKeys = map[string]string{
 var tlsDefaults = map[string]string{
 	"tls.acme.challenge_type": HTTP01ChallengeType,
 	"tls.acme.http_listen":    ":http",
-	"tls.acme.cache_dir":      "/var/lib/headscale/cache",
+	"tls.acme.cache_dir":      "/var/lib/thelo-controller/cache",
 }
 
 // warnLegacyTLSKeys points at the tls keys for flat keys in the config
@@ -599,7 +599,8 @@ func LoadConfig(path string, isFile bool) error {
 		viper.SetConfigName("config")
 
 		if path == "" {
-			viper.AddConfigPath("/etc/headscale/")
+			viper.AddConfigPath("/etc/thelo-controller/")
+			viper.AddConfigPath("/etc/headscale/") // the old location, for one release
 			viper.AddConfigPath("$HOME/.headscale")
 			viper.AddConfigPath(".")
 		} else {
@@ -634,7 +635,7 @@ func LoadConfig(path string, isFile bool) error {
 	viper.SetDefault("derp.server.automatically_add_embedded_derp_region", true)
 	viper.SetDefault("derp.update_frequency", "3h")
 
-	viper.SetDefault("unix_socket", "/var/run/headscale/headscale.sock")
+	viper.SetDefault("unix_socket", "/var/run/thelo-controller/theloctl.sock")
 	viper.SetDefault("unix_socket_permission", "0o770")
 
 	viper.SetDefault("cli.timeout", "5s")
@@ -881,7 +882,7 @@ func validateServerConfigInto(v *configValidator) {
 	if viper.GetString("noise.private_key_path") == "" {
 		v.Add(&ConfigError{
 			Reason: "noise.private_key_path is required",
-			Hint:   "set noise.private_key_path: /var/lib/headscale/noise_private.key (or any writable path)",
+			Hint:   "set noise.private_key_path: /var/lib/thelo-controller/noise_private.key (or any writable path)",
 			See:    "https://headscale.net/stable/setup/install/official/",
 		})
 	}

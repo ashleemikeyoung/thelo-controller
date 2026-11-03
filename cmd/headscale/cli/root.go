@@ -70,7 +70,7 @@ func initConfig() {
 	}
 
 	disableUpdateCheck := viper.GetBool("disable_check_updates")
-	if !disableUpdateCheck && !machineOutput {
+	if checkUpstreamReleases && !disableUpdateCheck && !machineOutput {
 		versionInfo := types.GetVersionInfo()
 		if (runtime.GOOS == "linux" || runtime.GOOS == "darwin") &&
 			!versionInfo.Dirty {
@@ -133,6 +133,8 @@ https://github.com/juanfont/headscale`,
 }
 
 func Execute() {
+	brandCommands(rootCmd)
+
 	cmd, err := rootCmd.ExecuteC()
 	if err != nil {
 		outputFormat, _ := cmd.Flags().GetString("output")

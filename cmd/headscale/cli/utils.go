@@ -383,7 +383,7 @@ func printError(err error, outputFormat string) {
 	}
 
 	if outputFormat == "" {
-		fmt.Fprintf(os.Stderr, "Error: %s\n", err)
+		fmt.Fprintf(os.Stderr, "Error: %s\n", brandText(err.Error())) // JSON output stays as is, for machines
 
 		return
 	}
