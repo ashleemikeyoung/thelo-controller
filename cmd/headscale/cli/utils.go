@@ -345,7 +345,7 @@ func confirmAction(cmd *cobra.Command, prompt string) bool {
 		return true
 	}
 
-	return util.YesNo(prompt)
+	return util.YesNo(brandText(prompt))
 }
 
 // renderTable prints a human-readable pterm table with the given header row

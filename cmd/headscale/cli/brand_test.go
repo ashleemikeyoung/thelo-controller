@@ -11,16 +11,17 @@ import (
 
 func TestBrandText(t *testing.T) {
 	for in, want := range map[string]string{
-		"Manage the nodes of Headscale":                                        "Manage the nodes of the Thelo Controller",
-		"Launches the headscale server":                                        "Launches the Thelo Controller",
-		"use 'headscale auth register --auth-id <id>'":                         "use 'theloctl auth register --auth-id <id>'",
-		"connecting to headscale: dial unix /var/run/headscale/headscale.sock": "connecting to the Thelo Controller: dial unix /var/run/headscale/headscale.sock",
-		"loading policy: open /etc/headscale/policy.hujson: no such file":      "loading policy: open /etc/headscale/policy.hujson: no such file",
-		"see https://github.com/juanfont/headscale and the tailnet_id field":   "see https://github.com/juanfont/headscale and the tailnet_id field",
-		"Add a device to your tailnet; Tailnets are listed":                    "Add a device to your thelonet; Thelonets are listed",
-		"The version of headscale.":                                            "The version of the Thelo Controller.",
-		"Manage the Headscale ACL Policy":                                      "Manage the Thelo Controller ACL Policy",
-		brandCredit:                                                            brandCredit,
+		"Manage the nodes of Headscale": "Manage the nodes of the Thelo Controller",
+		"Launches the headscale server": "Launches the Thelo Controller",
+		"DO NOT run this command if an instance of headscale is running, are you sure headscale is not running?": "DO NOT run this command if an instance of the Thelo Controller is running, are you sure theloctl is not running?",
+		"use 'headscale auth register --auth-id <id>'":                                                           "use 'theloctl auth register --auth-id <id>'",
+		"connecting to headscale: dial unix /var/run/headscale/headscale.sock":                                   "connecting to the Thelo Controller: dial unix /var/run/headscale/headscale.sock",
+		"loading policy: open /etc/headscale/policy.hujson: no such file":                                        "loading policy: open /etc/headscale/policy.hujson: no such file",
+		"see https://github.com/juanfont/headscale and the tailnet_id field":                                     "see https://github.com/juanfont/headscale and the tailnet_id field",
+		"Add a device to your tailnet; Tailnets are listed":                                                      "Add a device to your thelonet; Thelonets are listed",
+		"The version of headscale.":                                                                              "The version of the Thelo Controller.",
+		"Manage the Headscale ACL Policy":                                                                        "Manage the Thelo Controller ACL Policy",
+		brandCredit:                                                                                              brandCredit,
 	} {
 		assert.Equal(t, want, brandText(in), in)
 	}
