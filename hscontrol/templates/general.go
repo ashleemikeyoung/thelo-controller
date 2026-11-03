@@ -83,9 +83,16 @@ func codeBlockText(code string) *elem.Element {
 	return elem.Pre(nil, elem.Code(nil, elem.Text(code)))
 }
 
-// ProductName is the name people see for this service. ElRoi is the product
-// brand and Qavats the company; the marks are in [assets.Brand].
-const ProductName = "ElRoi Pneuma"
+// ProductName is the name people see for the network, and ControllerName for
+// this server. Qavats Ranch is the company; the marks are in [assets.Brand].
+// Headscale and Tailscale appear only in the credit (BRANDING.md in
+// identity_authority_stack).
+const (
+	ProductName    = "Thelo"
+	ControllerName = "Thelo Controller"
+	NetName        = "thelonet"
+	CompanyName    = "Qavats Ranch"
+)
 
 // brandMark renders a mark that follows the reader's colour scheme: the
 // "-on-dark" variant in dark mode, the "-on-light" variant otherwise.
@@ -104,12 +111,12 @@ func brandMark(name, alt, class string) elem.Node {
 }
 
 // headscaleLogo returns the product header shown at the top of every page:
-// the ElRoi mark with the product name beside it, linking to the home page.
+// the product mark with the product name beside it, linking to the home page.
 // It keeps the .headscale-logo class so upstream styling hooks still apply.
 func headscaleLogo() elem.Node {
 	return elem.A(attrs.Props{attrs.Href: "/", attrs.Class: "headscale-logo brand-header", "aria-label": ProductName},
 		brandMark("elroi", "ElRoi", "brand-product"),
-		elem.Span(attrs.Props{attrs.Class: "brand-name"}, elem.Text("Pneuma")),
+		elem.Span(attrs.Props{attrs.Class: "brand-name"}, elem.Text(ProductName)),
 	)
 }
 
@@ -130,7 +137,7 @@ func pageFooter() *elem.Element {
 		},
 		brandMark("qavats-it", "Qavats IT", "brand-company"),
 		elem.P(nil,
-			elem.Text(ProductName+" is operated by Qavats. Built on "),
+			elem.Text("The "+ControllerName+" is operated by "+CompanyName+". Built on "),
 			elem.A(attrs.Props{
 				attrs.Href:   "https://github.com/juanfont/headscale",
 				attrs.Rel:    "noreferrer noopener",

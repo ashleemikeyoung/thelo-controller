@@ -8,7 +8,7 @@ import (
 
 func Apple(url string) *elem.Element {
 	return page(
-		"headscale - Apple",
+		ProductName+" - Apple",
 		H1(elem.Text("iOS configuration")),
 		H2(elem.Text("GUI")),
 		Ol(
@@ -72,7 +72,7 @@ func Apple(url string) *elem.Element {
 				nil,
 				elem.Text("Enter "),
 				Code(elem.Text(url)),
-				elem.Text(" of the headscale instance and press "),
+				elem.Text(" of the "+ControllerName+" and press "),
 				elem.Strong(nil, elem.Text("Add Account")),
 			),
 			elem.Li(

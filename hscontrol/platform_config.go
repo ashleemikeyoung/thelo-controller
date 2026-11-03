@@ -109,11 +109,11 @@ var commonTemplate = textTemplate.Must(
     <key>PayloadUUID</key>
     <string>{{.UUID}}</string>
     <key>PayloadDisplayName</key>
-    <string>ElRoi Pneuma</string>
+    <string>Thelo</string>
     <key>PayloadDescription</key>
-    <string>Configure Tailscale login server to: {{.URL}}</string>
+    <string>Connects the Tailscale app to Thelo at {{.URL}}</string>
     <key>PayloadIdentifier</key>
-    <string>com.github.juanfont.headscale</string>
+    <string>com.qavats.thelo</string>
     <key>PayloadRemovalDisallowed</key>
     <false/>
     <key>PayloadType</key>
@@ -135,7 +135,7 @@ var payloadTemplate = textTemplate.Must(textTemplate.New("payloadTemplate").Pars
         <key>PayloadUUID</key>
         <string>{{.UUID}}</string>
         <key>PayloadIdentifier</key>
-        <string>com.github.juanfont.headscale</string>
+        <string>com.qavats.thelo</string>
         <key>PayloadVersion</key>
         <integer>1</integer>
         <key>PayloadEnabled</key>

@@ -204,7 +204,7 @@ func warningBox(title, message string) *elem.Element {
 func downloadButton(href, text string) *elem.Element {
 	return elem.A(attrs.Props{
 		attrs.Href:     href,
-		attrs.Download: "headscale_macos.mobileconfig",
+		attrs.Download: "thelo_macos.mobileconfig",
 		attrs.Style: styles.Props{
 			styles.Display:         "inline-flex",
 			styles.AlignItems:      cssCenter,

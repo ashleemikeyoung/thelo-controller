@@ -9,7 +9,7 @@ import (
 // (OIDC callback, SSH check, registration confirmation, etc.).
 type AuthErrorResult struct {
 	// Title is the browser tab / page title,
-	// e.g. "ElRoi Pneuma - Error".
+	// e.g. "Thelo - Error".
 	Title string
 
 	// Heading is the bold red text inside the error box,

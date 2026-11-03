@@ -23,7 +23,7 @@ var CSS string
 //go:embed headscale.svg
 var SVG string
 
-// Brand holds the ElRoi Pneuma product marks and the Qavats IT company marks,
+// Brand holds the product marks (the ElRoi mark, shown beside the Thelo name) and the Qavats IT company marks,
 // each in a variant for light and for dark backgrounds, served under /brand/.
 //
 //go:embed brand/*.svg

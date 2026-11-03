@@ -10,7 +10,7 @@ import (
 // communicate what just happened.
 type AuthSuccessResult struct {
 	// Title is the browser tab / page title,
-	// e.g. "ElRoi Pneuma - Node Registered".
+	// e.g. "Thelo - Node Registered".
 	Title string
 
 	// Heading is the bold green text inside the success box,
@@ -46,7 +46,7 @@ func AuthSuccess(result AuthSuccessResult) *elem.Element {
 		box,
 		H2(elem.Text("Next")),
 		P(
-			elem.Text("This device is on the tailnet. Servers are reachable by name, for example "),
+			elem.Text("This device is on the "+NetName+". Servers are reachable by name, for example "),
 			Code(elem.Text("ssh ash@id")),
 			elem.Text(". "),
 			A("/", elem.Text("How to join another device")),

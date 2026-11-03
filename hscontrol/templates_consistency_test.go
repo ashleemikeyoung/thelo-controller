@@ -17,7 +17,7 @@ func TestTemplateHTMLConsistency(t *testing.T) {
 		{
 			name: "Auth Success",
 			html: templates.AuthSuccess(templates.AuthSuccessResult{
-				Title:   "ElRoi Pneuma - Node Registered",
+				Title:   "Thelo - Node Registered",
 				Heading: "Node registered",
 				Verb:    "Registered",
 				User:    "test@example.com",
@@ -27,7 +27,7 @@ func TestTemplateHTMLConsistency(t *testing.T) {
 		{
 			name: "Auth Error",
 			html: templates.AuthError(templates.AuthErrorResult{
-				Title:   "ElRoi Pneuma - Error",
+				Title:   "Thelo - Error",
 				Heading: "Forbidden",
 				Message: "You are not authorized. Please contact your administrator.",
 			}).Render(),
@@ -99,7 +99,7 @@ func TestTemplateModernHTMLFeatures(t *testing.T) {
 		{
 			name: "Auth Success",
 			html: templates.AuthSuccess(templates.AuthSuccessResult{
-				Title:   "ElRoi Pneuma - Node Registered",
+				Title:   "Thelo - Node Registered",
 				Heading: "Node registered",
 				Verb:    "Registered",
 				User:    "test@example.com",
@@ -109,7 +109,7 @@ func TestTemplateModernHTMLFeatures(t *testing.T) {
 		{
 			name: "Auth Error",
 			html: templates.AuthError(templates.AuthErrorResult{
-				Title:   "ElRoi Pneuma - Error",
+				Title:   "Thelo - Error",
 				Heading: "Forbidden",
 				Message: "You are not authorized. Please contact your administrator.",
 			}).Render(),
@@ -169,7 +169,7 @@ func TestTemplateExternalLinkSecurity(t *testing.T) {
 		{
 			name: "Auth Success",
 			html: templates.AuthSuccess(templates.AuthSuccessResult{
-				Title:   "ElRoi Pneuma - Node Registered",
+				Title:   "Thelo - Node Registered",
 				Heading: "Node registered",
 				Verb:    "Registered",
 				User:    "test@example.com",
@@ -183,7 +183,7 @@ func TestTemplateExternalLinkSecurity(t *testing.T) {
 		{
 			name: "Auth Error",
 			html: templates.AuthError(templates.AuthErrorResult{
-				Title:   "ElRoi Pneuma - Error",
+				Title:   "Thelo - Error",
 				Heading: "Forbidden",
 				Message: "You are not authorized. Please contact your administrator.",
 			}).Render(),
@@ -266,7 +266,7 @@ func TestTemplateAccessibilityAttributes(t *testing.T) {
 		{
 			name: "Auth Success",
 			html: templates.AuthSuccess(templates.AuthSuccessResult{
-				Title:   "ElRoi Pneuma - Node Registered",
+				Title:   "Thelo - Node Registered",
 				Heading: "Node registered",
 				Verb:    "Registered",
 				User:    "test@example.com",
@@ -276,7 +276,7 @@ func TestTemplateAccessibilityAttributes(t *testing.T) {
 		{
 			name: "Auth Error",
 			html: templates.AuthError(templates.AuthErrorResult{
-				Title:   "ElRoi Pneuma - Error",
+				Title:   "Thelo - Error",
 				Heading: "Forbidden",
 				Message: "You are not authorized. Please contact your administrator.",
 			}).Render(),

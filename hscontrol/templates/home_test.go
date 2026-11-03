@@ -9,8 +9,12 @@ import (
 func TestHomeIsBrandedAndExplainsJoining(t *testing.T) {
 	html := Home("https://pneuma.example.com").Render()
 
-	assert.Contains(t, html, "<title>ElRoi Pneuma</title>")
-	assert.Contains(t, html, "tailscale login --login-server https://pneuma.example.com")
+	assert.Contains(t, html, "<title>Thelo</title>")
+	assert.Contains(t, html, "thelo login --login-server https://pneuma.example.com")
+	assert.Contains(t, html, "Simlah")
+	assert.Contains(t, html, "The Thelo Controller is operated by Qavats Ranch")
+	assert.NotContains(t, html, "Pneuma<")
+	assert.NotContains(t, html, "ElRoi account")
 	// product mark in the header, company mark in the footer, each with a dark-mode variant
 	for _, mark := range []string{"elroi", "qavats-it"} {
 		assert.Contains(t, html, `src="/brand/`+mark+`-on-light.svg"`)

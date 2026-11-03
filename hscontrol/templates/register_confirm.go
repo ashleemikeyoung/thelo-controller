@@ -80,7 +80,7 @@ func RegisterConfirm(info RegisterConfirmInfo) *elem.Element {
 		ProductName+" - Confirm node registration",
 		H2(elem.Text("Confirm node registration")),
 		P(elem.Text(
-			"A device is asking to be added to your tailnet. "+
+			"A device is asking to be added to your "+NetName+". "+
 				"Please review the details below and confirm that this device is yours.",
 		)),
 		deviceList,

@@ -64,7 +64,7 @@ func pingExplanation() *elem.Element {
 				"The server sends a PingRequest to the target node via its MapResponse stream.",
 			)),
 			elem.Li(nil, elem.Text(
-				"The node's Tailscale client receives the request and responds back to the server.",
+				"The node's Thelo client receives the request and responds back to the server.",
 			)),
 			elem.Li(nil, elem.Text(
 				"The server measures the round-trip latency from send to callback.",
