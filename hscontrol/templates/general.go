@@ -5,6 +5,7 @@ import (
 	"github.com/chasefleming/elem-go/attrs"
 	"github.com/chasefleming/elem-go/styles"
 	"github.com/juanfont/headscale/hscontrol/assets"
+	"github.com/juanfont/headscale/hscontrol/types"
 )
 
 // mdTypesetBody creates a body element with md-typeset styling
@@ -92,6 +93,8 @@ const (
 	ControllerName = "Thelo Controller"
 	NetName        = "thelonet"
 	CompanyName    = "Qavats Ranch"
+	// SourceURL is where the Thelo Controller's source is published (AGPL).
+	SourceURL = "https://github.com/ashleemikeyoung/headscale"
 )
 
 // brandMark renders a mark that follows the reader's colour scheme: the
@@ -120,9 +123,20 @@ func headscaleLogo() elem.Node {
 	)
 }
 
-// pageFooter creates a consistent footer for all pages: the company mark,
-// and the credit to the open-source projects this is built on, which their
-// BSD-3-Clause licences ask us to keep.
+// sourceLink is the source of the running version, which the AGPL asks a network
+// service to offer its users: the commit it was built from, or the branch.
+func sourceLink() string {
+	if c := types.GetVersionInfo().Commit; c != "" && c != "unknown" {
+		return SourceURL + "/tree/" + c
+	}
+
+	return SourceURL + "/tree/thelo"
+}
+
+// pageFooter creates a consistent footer for all pages: the company mark, the
+// licence with a link to this version's source (AGPL), and the credit to the
+// open-source projects this is built on, which their BSD-3-Clause licences ask
+// us to keep.
 func pageFooter() *elem.Element {
 	return elem.Footer(
 		attrs.Props{
@@ -137,7 +151,13 @@ func pageFooter() *elem.Element {
 		},
 		brandMark("qavats-it", "Qavats IT", "brand-company"),
 		elem.P(nil,
-			elem.Text("The "+ControllerName+" is operated by "+CompanyName+". Built on "),
+			elem.Text("The "+ControllerName+" is operated by "+CompanyName+". It is free software under the AGPL-3.0-or-later: "),
+			elem.A(attrs.Props{
+				attrs.Href:   sourceLink(),
+				attrs.Rel:    "noreferrer noopener",
+				attrs.Target: "_blank",
+			}, elem.Text("source code")),
+			elem.Text(". Built on "),
 			elem.A(attrs.Props{
 				attrs.Href:   "https://github.com/juanfont/headscale",
 				attrs.Rel:    "noreferrer noopener",

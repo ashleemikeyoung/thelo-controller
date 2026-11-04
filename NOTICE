@@ -1,0 +1,33 @@
+Thelo Controller
+Copyright (C) 2026 Qavats Ranch, LLC
+
+The Thelo Controller is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or (at your
+option) any later version (see LICENSE). It is distributed WITHOUT ANY
+WARRANTY. As the AGPL asks of a network service, its web pages link to the
+source of the version they run.
+
+The Thelo Controller is derived from Headscale
+(https://github.com/juanfont/headscale).
+
+  Headscale
+  Copyright (c) 2020, Juan Font
+  Licensed under the BSD 3-Clause License (see LICENSE-BSD-3-Clause).
+
+It also uses code from Tailscale (https://github.com/tailscale/tailscale),
+Copyright (c) 2020 Tailscale Inc & contributors, under the BSD 3-Clause
+License, through the Go modules it depends on.
+
+Files that originate from Headscale keep their original licence; changes
+made to them for the Thelo Controller are recorded in the Git history of this
+repository. Files written for the Thelo Controller carry the notice
+"Copyright (C) 2026 Qavats Ranch, LLC" and "SPDX-License-Identifier:
+AGPL-3.0-or-later". The work as a whole is distributed under the GNU Affero
+General Public License, version 3 or later.
+
+The names and marks Thelo, Qavats and ElRoi belong to Qavats Ranch, LLC and
+are not licensed under the AGPL; this includes the logos in
+hscontrol/assets/brand. "Tailscale" is a trademark of Tailscale Inc. The Thelo
+Controller is not affiliated with, endorsed by, or sponsored by the Headscale
+project or Tailscale Inc.

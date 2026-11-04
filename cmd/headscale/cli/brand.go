@@ -1,3 +1,6 @@
+// Copyright (C) 2026 Qavats Ranch, LLC
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 package cli
 
 import (
@@ -15,7 +18,8 @@ const (
 	brandProduct = "Thelo Controller"
 	brandCommand = "theloctl"
 	brandNet     = "thelonet"
-	brandCredit  = "Built on Headscale (https://github.com/juanfont/headscale) and " +
+	brandCredit  = "Free software, AGPL-3.0-or-later (source: https://github.com/ashleemikeyoung/headscale). " +
+		"Built on Headscale (https://github.com/juanfont/headscale) and " +
 		"Tailscale (https://github.com/tailscale/tailscale), BSD-3-Clause."
 	// checkUpstreamReleases is off: theloctl does not ask GitHub about Headscale
 	// releases. Updates come from our own builds.

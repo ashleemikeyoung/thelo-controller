@@ -1,3 +1,6 @@
+// Copyright (C) 2026 Qavats Ranch, LLC
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 package templates
 
 import (
@@ -20,6 +23,9 @@ func TestHomeIsBrandedAndExplainsJoining(t *testing.T) {
 		assert.Contains(t, html, `src="/brand/`+mark+`-on-light.svg"`)
 		assert.Contains(t, html, `srcset="/brand/`+mark+`-on-dark.svg"`)
 	}
+	// the licence and this version's source, which the AGPL asks for
+	assert.Contains(t, html, "AGPL-3.0-or-later")
+	assert.Contains(t, html, `href="`+SourceURL+`/tree/`)
 	// the upstream credit the BSD-3-Clause licences ask for
 	assert.Contains(t, html, "https://github.com/juanfont/headscale")
 	assert.Contains(t, html, "https://github.com/tailscale/tailscale")

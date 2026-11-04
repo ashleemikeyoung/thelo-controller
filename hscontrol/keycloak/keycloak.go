@@ -1,3 +1,6 @@
+// Copyright (C) 2026 Qavats Ranch, LLC
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 // Package keycloak checks OIDC principals against a Keycloak realm's admin
 // API, so that headscale can revoke tailnet access when Keycloak does.
 //
