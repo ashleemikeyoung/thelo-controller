@@ -2,7 +2,7 @@
 
 The Thelo Controller (**`theloctl`**) is the control server of Qavats Ranch, LLC's private
 networks. It runs a **thelonet**: it signs devices in, hands out their addresses and keys,
-and applies the network's policy. Devices connect with [Thelo](https://github.com/ashleemikeyoung/tailscale),
+and applies the network's policy. Devices connect with [Thelo](https://github.com/ashleemikeyoung/thelo),
 our client, or with the stock Tailscale apps.
 
 This repository is a fork of [Headscale](https://github.com/juanfont/headscale). It is not

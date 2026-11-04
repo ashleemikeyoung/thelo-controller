@@ -18,7 +18,7 @@ const (
 	brandProduct = "Thelo Controller"
 	brandCommand = "theloctl"
 	brandNet     = "thelonet"
-	brandCredit  = "Free software, AGPL-3.0-or-later (source: https://github.com/ashleemikeyoung/headscale). " +
+	brandCredit  = "Free software, AGPL-3.0-or-later (source: https://github.com/ashleemikeyoung/thelo-controller). " +
 		"Built on Headscale (https://github.com/juanfont/headscale) and " +
 		"Tailscale (https://github.com/tailscale/tailscale), BSD-3-Clause."
 	// checkUpstreamReleases is off: theloctl does not ask GitHub about Headscale

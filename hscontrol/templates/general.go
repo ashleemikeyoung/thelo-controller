@@ -94,7 +94,7 @@ const (
 	NetName        = "thelonet"
 	CompanyName    = "Qavats Ranch"
 	// SourceURL is where the Thelo Controller's source is published (AGPL).
-	SourceURL = "https://github.com/ashleemikeyoung/headscale"
+	SourceURL = "https://github.com/ashleemikeyoung/thelo-controller"
 )
 
 // brandMark renders a mark that follows the reader's colour scheme: the
