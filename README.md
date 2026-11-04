@@ -5,7 +5,7 @@ networks. It runs a **thelonet**: it signs devices in, hands out their addresses
 and applies the network's policy. Devices connect with [Thelo](https://github.com/ashleemikeyoung/thelo),
 our client, or with the stock Tailscale apps.
 
-This repository is a fork of [Headscale](https://github.com/juanfont/headscale). It is not
+The Thelo Controller is built on [Headscale](https://github.com/juanfont/headscale) and follows its development line. It is not
 affiliated with or endorsed by the Headscale project or Tailscale Inc.; "Tailscale" is Tailscale
 Inc.'s trademark. Headscale's own README is kept as [README.upstream.md](README.upstream.md).
 
