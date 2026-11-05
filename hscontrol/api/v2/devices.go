@@ -49,6 +49,17 @@ type Device struct {
 	// Populated only when fields=all is requested, then as [] when empty.
 	AdvertisedRoutes []string `json:"advertisedRoutes,omitzero"`
 	EnabledRoutes    []string `json:"enabledRoutes,omitzero"`
+
+	// ClientConnectivity is populated only when fields=all is requested.
+	ClientConnectivity *ClientConnectivity `json:"clientConnectivity,omitempty"`
+}
+
+// ClientConnectivity is the part of Tailscale's clientConnectivity that
+// Headscale tracks: the endpoints the node last reported in a map request,
+// public (as seen by STUN) and local. Latency and client support are not
+// tracked and are left out.
+type ClientConnectivity struct {
+	Endpoints []string `json:"endpoints" nullable:"false"`
 }
 
 // DeviceRoutes is the GET /device/{id}/routes response: what the node announces
@@ -485,6 +496,13 @@ func deviceFromView(view types.NodeView, allFields bool, baseDomain string) Devi
 	if allFields {
 		d.AdvertisedRoutes = emptyIfNil(util.PrefixesToString(view.AnnouncedRoutes()))
 		d.EnabledRoutes = emptyIfNil(util.PrefixesToString(view.ApprovedRoutes().AsSlice()))
+
+		endpoints := make([]string, 0, view.Endpoints().Len())
+		for _, ep := range view.Endpoints().All() {
+			endpoints = append(endpoints, ep.String())
+		}
+
+		d.ClientConnectivity = &ClientConnectivity{Endpoints: endpoints}
 	}
 
 	return d
