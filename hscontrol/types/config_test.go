@@ -1461,7 +1461,7 @@ dns:
 			want: TLSConfig{ACME: ACMEConfig{
 				ChallengeType: HTTP01ChallengeType,
 				HTTPListen:    ":http",
-				CacheDir:      "/var/lib/headscale/cache",
+				CacheDir:      "/var/lib/thelo-controller/cache",
 			}},
 		},
 		{
@@ -1496,7 +1496,7 @@ tls:
 				ACME: ACMEConfig{
 					ChallengeType: HTTP01ChallengeType,
 					HTTPListen:    ":http",
-					CacheDir:      "/var/lib/headscale/cache",
+					CacheDir:      "/var/lib/thelo-controller/cache",
 				},
 			},
 		},
@@ -1528,7 +1528,7 @@ tls_letsencrypt_cache_dir: /var/lib/headscale/.cache
 				ACME: ACMEConfig{
 					ChallengeType: HTTP01ChallengeType,
 					HTTPListen:    ":http",
-					CacheDir:      "/var/lib/headscale/cache",
+					CacheDir:      "/var/lib/thelo-controller/cache",
 				},
 			},
 		},
